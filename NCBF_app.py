@@ -3,7 +3,7 @@
 ###########################################################################################################
 ######## coded by = Cameron Rondeau
 ######## insitution = Nashville Community Bail Fund
-######## application = Ineractive Dashboard
+######## application = Interactive Dashboard
 ###########################################################################################################
 ###########################################################################################################
 ###########################################################################################################
@@ -29,7 +29,6 @@ st.title('Nashville Community Bail Fund Dashboard')
 
 # read in file
 uploaded_file = st.file_uploader("Upload a file (Export entire database as CSV file from Bail Fund App)")
-#uploaded_file = "../../data/ncbf_data_030823.csv"
 
 progress_text = "Running Analysis. Please wait."
 percent_complete = 0
@@ -341,7 +340,8 @@ if uploaded_file is not None:
         outcomes['Outcome'] = outcomes.apply(lambda row: success_outcome(row), axis=1)
         outcomes = outcomes[['Outcome', 'Disposition', 'Count', 'Percentage', 'Total Bail Amount']]
         
-        st.dataframe(outcomes.set_index(outcomes.columns[0]), use_container_width=True)
+        st.table(outcomes.set_index(outcomes.columns[0]))
+        #st.dataframe(outcomes.set_index(outcomes.columns[0]), use_container_width=True)
         
         fig = px.pie(outcomes, values='Count', names='Disposition')
         #fig.update_layout(legend_title=None, legend_y=0.5)
@@ -432,7 +432,8 @@ if uploaded_file is not None:
         dv.index.name = 'Disposition'
         dv.reset_index(inplace=True)
         
-        st.dataframe(dv.set_index(dv.columns[0]), use_container_width=True)
+        st.table(dv.set_index(dv.columns[0]))
+        #st.dataframe(dv.set_index(dv.columns[0]), use_container_width=True)
         
         
         percent_complete += 10
