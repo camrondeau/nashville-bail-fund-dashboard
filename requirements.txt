@@ -5,5 +5,5 @@ matplotlib
 seaborn
 datetime
 plotly
-scipy.stats
+scipy
 altair
