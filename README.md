@@ -1,2 +1,2 @@
-# nashville-bail-fund-dashboard
-Repository to hold the code for the Nashville Community Bail Fund Dashboard
+# Nashville Community Bail Fund Dashboard
+Repository to hold the code for the NCBF Dashboard
