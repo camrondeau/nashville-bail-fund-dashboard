@@ -556,8 +556,9 @@ if uploaded_file is not None:
         
         # Calculate percentages
         percentages = data.groupby(['Gender', 'Bail Request Status']).size().reset_index(name='Count')
-        percentages['Percentage'] = percentages.groupby('Bail Request Status')['Count'].apply(lambda x: x / x.sum() * 100)
-
+        percentages_col = percentages.groupby('Bail Request Status', as_index=False)['Count'].apply(lambda x: x / x.sum() * 100)
+        percentages['Percentage'] = percentages_col.reset_index(level=0, drop=True)
+        
         fig = go.Figure()
         
         colors = {'Completed': '#142c5b', 'Bail Not Made': '#9B59B6'}
